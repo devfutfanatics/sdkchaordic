@@ -6,6 +6,10 @@
         {
             "name": "Bruna",
             "email": "brudib@gmail.com"
+        },
+        {
+            "name": "Weslley Ceresa",
+            "email": "ceresaconsultoria@gmail.com"
         }
     ],
     "minimum-stability": "stable",

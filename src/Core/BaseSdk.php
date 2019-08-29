@@ -6,9 +6,10 @@ class BaseSdk {
     protected $apiKey;
     protected $apiSecret;
     
-    protected function setAuthorization($apiKey, $apiSecret){
+    public function setAuthorization($apiKey, $apiSecret){
         $this->apiKey = $apiKey;
         $this->apiSecret = $apiSecret;
+        return $this;
     }
     
 }
