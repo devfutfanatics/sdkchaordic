@@ -28,5 +28,4 @@ class Recommendations extends BaseSdk{
         
         throw new SdkChaordicException("[Recommendations][pages] " . $response["text"]);
     }
-    
 }
