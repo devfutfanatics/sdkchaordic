@@ -14,7 +14,7 @@ class Recommendations extends BaseSdk{
     }
     
     public function pages($name, $source, $deviceId, $productFormat){
-        return $this->http->get("pages/recommendations", array(
+        $response = $this->http->get("pages/recommendations", array(
             "apiKey" => $this->apiKey,
             "secretKey" => $this->apiSecret,
             "name" => $name,
@@ -22,6 +22,11 @@ class Recommendations extends BaseSdk{
             "deviceId" => $deviceId,
             "productFormat" => $productFormat
         ));
+        
+        if($this->isSucess($response["code"]))
+            return $response["data"];
+        
+        throw new SdkChaordicException("[Recommendations][pages] " . $response["text"]);
     }
     
 }

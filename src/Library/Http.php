@@ -55,21 +55,28 @@ class Http {
     }
 
     private function curlCall($url, $type, $postParams = array(), $getParams = array(), $headerParams = array()) {
-        $url = $this->baseUrl . "?" . http_build_query($getParams);
+        $url = $this->baseUrl . $url .  "?" . http_build_query($getParams);
         
-        $header = array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen(json_encode($postParams))
-            );
+        $header = array();
         
         $header = array_merge($header, $headerParams);
-        
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $type);
+
         if ($type == Http::POST) {
+
+            $postHeader = array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen(json_encode($postParams))
+            );
+
+            $header = array_merge($header, $postHeader);
+
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postParams));
         }
+
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
         curl_setopt($ch, CURLOPT_SSLVERSION, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

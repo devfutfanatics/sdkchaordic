@@ -14,4 +14,7 @@ class BaseSdk {
         return $this;
     }
     
+    public function isSucess($code){
+        return $code == 200;
+    }
 }
