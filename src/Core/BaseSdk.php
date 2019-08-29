@@ -2,7 +2,7 @@
 
 namespace SdkChaordic\Core;
 
-require '../Helpers/global.php';
+require __DIR__ . '/../Helpers/global.php';
 
 class BaseSdk {
     protected $apiKey;
