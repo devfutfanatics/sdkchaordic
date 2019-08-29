@@ -1,0 +1,21 @@
+{
+    "name": "futfanatics/sdkchaordic",
+    "description": "SDK da API da Chaordic",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Bruna",
+            "email": "brudib@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "SdkChaordic\\": "src/"
+        }
+    },
+    "prefer-stable": true
+}
