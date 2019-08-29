@@ -2,6 +2,9 @@
 
 namespace SdkChaordic\Library;
 
+use Exception;
+use function curlError;
+
 class Http {
 
     private $baseUrl;
