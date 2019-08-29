@@ -1,5 +1,7 @@
 <?php
 
+require '../Helpers/global.php';
+
 namespace SdkChaordic\Core;
 
 class BaseSdk {
