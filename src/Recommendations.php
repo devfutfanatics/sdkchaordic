@@ -3,6 +3,7 @@
 namespace SdkChaordic;
 
 use SdkChaordic\Core\BaseSdk;
+use SdkChaordic\Exceptions\SdkChaordicException;
 use SdkChaordic\Library\Http;
 
 class Recommendations extends BaseSdk{
@@ -26,6 +27,6 @@ class Recommendations extends BaseSdk{
         if($this->isSucess($response["code"]))
             return $response["data"];
         
-        throw new SdkChaordicException("[Recommendations][pages] " . $response["text"]);
+        throw new SdkChaordicException("[Recommendations][pages] " . $response["responseText"]);
     }
 }
