@@ -3,6 +3,7 @@
 namespace SdkChaordic;
 
 use SdkChaordic\Core\BaseSdk;
+use SdkChaordic\Exceptions\SdkChaordicException;
 use SdkChaordic\Library\Http;
 
 class Search extends BaseSdk{
