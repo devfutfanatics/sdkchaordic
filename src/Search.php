@@ -17,13 +17,17 @@ class Search extends BaseSdk{
     public function search($terms, $page, $resultsPerPage, $sortBy, array $filters, $allowRedirect = false, $productFormat = "complete", $showOnlyAvailable = true, $pids = "", $salesChannel = "", $hide = ""){
         $filter = array();     
         
-        foreach($filters as $index => $f){
-            if($index == 0){
-                $filter[] = $f;
+        if(count($filter) > 0){
+            foreach($filters as $index => $f){
+                if($index == 0){
+                    $filter[] = $f;
+                }
+                else{
+                    $filter[] = "&filter=" . $f;
+                }
             }
-            else{
-                $filter[] = "&filter=" . $f;
-            }
+            
+            $filter = implode("&", $filter);
         }
         
         $response = $this->http->get("search", array(
