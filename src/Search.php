@@ -13,7 +13,7 @@ class Search extends BaseSdk{
         $this->http->setBaseUrl("https://api.linximpulse.com/engage/search/v3/");
     }
     
-    public function search($terms, $page, $resultsPerPage, $sortBy, array $filters, $pids, $salesChannel, $hide, $productFormat, $showOnlyAvailable, $allowRedirect){
+    public function search($terms, $page, $resultsPerPage, $sortBy, array $filters, $allowRedirect = false, $productFormat = "complete", $showOnlyAvailable = true, $pids, $salesChannel, $hide){
         $filter = array();     
         
         foreach($filters as $index => $f){
