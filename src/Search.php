@@ -14,31 +14,33 @@ class Search extends BaseSdk{
         $this->http->setBaseUrl("https://api.linximpulse.com/engage/search/v3/");
     }
     
-    public function search($terms, $page, $resultsPerPage, $sortBy, array $filters, $allowRedirect = false, $productFormat = "complete", $showOnlyAvailable = true, $pids = "", $salesChannel = "", $hide = ""){
-        $filter = array();     
+    public function search($terms, $page, $resultsPerPage, $sortBy, array $filters = array(), $allowRedirect = false, $productFormat = "complete", $showOnlyAvailable = true, $pids = "", $salesChannel = "", $hide = ""){
         
-        if(count($filter) > 0){
-            foreach($filters as $index => $f){
-                if($index == 0){
-                    $filter[] = $f;
-                }
-                else{
-                    $filter[] = "&filter=" . $f;
-                }
-            }
-            
-            $filter = implode("&", $filter);
-        }
-        
-        $response = $this->http->get("search", array(
+        $query = array(
             "apiKey" => $this->apiKey,
             "secretKey" => $this->apiSecret,
             "resultsPerPage" => $resultsPerPage,
             "page" => $page,
             "sortBy" => $sortBy,
-            "terms" => $terms,
-            "filter" => $filter
-        ));
+            "terms" => $terms
+        );
+        
+        if(count($filters) > 0){
+            $filter = array();
+
+            foreach($filters as $index => $f){
+                if($index == 0){
+                    $filter[] = $f;
+                }
+                else{
+                    $filter[] = "filter=" . $f;
+                }
+            }
+            
+            $query["filter"] = implode("&", $filter);
+        }
+        
+        $response = $this->http->get("search", $query);
         
         if($this->isSucess($response["code"]))
             return $response["data"];

@@ -84,3 +84,16 @@ function curlError($err) {
     
     return $errors[$err];
 }
+
+function _http_build_query(array $data = array()){
+
+    $query = [];
+
+    foreach ($data as $key => $value) {
+        $query[] = $key."=". urlencode($value);
+    }
+
+    return implode("&", $query);
+
+}
+

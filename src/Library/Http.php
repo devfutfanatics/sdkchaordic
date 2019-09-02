@@ -3,6 +3,7 @@
 namespace SdkChaordic\Library;
 
 use Exception;
+use function _http_build_query;
 use function curlError;
 
 class Http {
@@ -55,7 +56,7 @@ class Http {
     }
 
     private function curlCall($url, $type, $postParams = array(), $getParams = array(), $headerParams = array()) {
-        $url = $this->baseUrl . $url .  "?" . http_build_query($getParams);
+        $url = $this->baseUrl . $url .  "?" . _http_build_query($getParams);
         
         $header = array();
         
