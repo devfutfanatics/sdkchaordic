@@ -10,7 +10,7 @@ class Search extends BaseSdk{
     
     public function __construct() {
         $this->http = new Http();
-        $this->http->setBaseUrl("https://busca.futfanatics.com.br/searchapi/v3/");
+        $this->http->setBaseUrl("https://api.linximpulse.com/engage/search/v3/");
     }
     
     public function search($terms, $page, $resultsPerPage, $sortBy, array $filters, $pids, $salesChannel, $hide, $productFormat, $showOnlyAvailable, $allowRedirect){
