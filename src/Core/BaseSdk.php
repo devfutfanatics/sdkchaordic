@@ -15,6 +15,6 @@ class BaseSdk {
     }
     
     public function isSucess($code){
-        return $code == 200;
+        return in_array($code, [200, 201, 204]);
     }
 }

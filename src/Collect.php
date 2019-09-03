@@ -27,7 +27,7 @@ class Collect extends BaseSdk{
             $body["user"] = $user;
         }
         
-        $response = $this->http->post("product", null, $body);
+        $response = $this->http->post("product", [], $body);
         
         if($this->isSucess($response["code"]))
             return $response["data"];
@@ -48,7 +48,7 @@ class Collect extends BaseSdk{
             $body["user"] = $user;
         }
         
-        $response = $this->http->post("cart", null, $body);
+        $response = $this->http->post("cart", [], $body);
         
         if($this->isSucess($response["code"]))
             return $response["data"];
@@ -70,7 +70,7 @@ class Collect extends BaseSdk{
             $body["user"] = $user;
         }
         
-        $response = $this->http->post("transaction", null, $body);
+        $response = $this->http->post("transaction", [], $body);
         
         if($this->isSucess($response["code"]))
             return $response["data"];
@@ -92,7 +92,7 @@ class Collect extends BaseSdk{
             $body["user"] = $user;
         }
         
-        $response = $this->http->post("search", null, $body);
+        $response = $this->http->post("search", [], $body);
         
         if($this->isSucess($response["code"]))
             return $response["data"];
@@ -100,7 +100,7 @@ class Collect extends BaseSdk{
         throw new SdkChaordicException("[Collect][search] " . $response["responseText"]);
     }
     
-    public function category($source, $deviceId, array $categories, $query, $user = null){
+    public function category($source, $deviceId, array $categories, $user = null){
         $body = array(
             "apiKey" => $this->apiKey,
             "secretKey" => $this->apiSecret,
@@ -113,7 +113,7 @@ class Collect extends BaseSdk{
             $body["user"] = $user;
         }
         
-        $response = $this->http->post("category", null, $body);
+        $response = $this->http->post("category", [], $body);
         
         if($this->isSucess($response["code"]))
             return $response["data"];
