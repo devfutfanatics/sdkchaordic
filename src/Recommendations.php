@@ -16,12 +16,12 @@ class Recommendations extends BaseSdk{
     
     public function pages($name, $source, $deviceId, $productFormat){
         $response = $this->http->get("pages/recommendations", array(
-            "apiKey" => $this->apiKey,
-            "secretKey" => $this->apiSecret,
-            "name" => $name,
-            "source" => $source,
-            "deviceId" => $deviceId,
-            "productFormat" => $productFormat
+            "apiKey" => urlencode($this->apiKey),
+            "secretKey" => urlencode($this->apiSecret),
+            "name" => urlencode($name),
+            "source" => urlencode($source),
+            "deviceId" => urlencode($deviceId),
+            "productFormat" => urlencode($productFormat)
         ));
         
         if($this->isSucess($response["code"]))

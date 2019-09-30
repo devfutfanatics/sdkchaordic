@@ -17,12 +17,12 @@ class Search extends BaseSdk{
     public function search($terms, $page, $resultsPerPage, $sortBy, array $filters = array(), $allowRedirect = false, $productFormat = "complete", $showOnlyAvailable = true, $pids = "", $salesChannel = "", $hide = ""){
         
         $query = array(
-            "apiKey" => $this->apiKey,
-            "secretKey" => $this->apiSecret,
-            "resultsPerPage" => $resultsPerPage,
-            "page" => $page,
-            "sortBy" => $sortBy,
-            "terms" => $terms
+            "apiKey" => urlencode($this->apiKey),
+            "secretKey" => urlencode($this->apiSecret),
+            "resultsPerPage" => urlencode($resultsPerPage),
+            "page" => urlencode($page),
+            "sortBy" => urlencode($sortBy),
+            "terms" => urlencode($terms)
         );
         
         if(count($filters) > 0){
@@ -30,10 +30,10 @@ class Search extends BaseSdk{
 
             foreach($filters as $index => $f){
                 if($index == 0){
-                    $filter[] = $f;
+                    $filter[] = urlencode($f);
                 }
                 else{
-                    $filter[] = "filter=" . $f;
+                    $filter[] = "filter=" . urlencode($f);
                 }
             }
             
