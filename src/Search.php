@@ -47,4 +47,26 @@ class Search extends BaseSdk{
         
         throw new SdkChaordicException("[Search][search] " . $response["responseText"]);
     }
+    
+    public function autocomplete($prefix, $resultsQueries = 5, $resultsProducts = 5, $category = false, $productFormat = "complete", $hide = "products") {
+        $query = array(
+            "apiKey" => urlencode($this->apiKey),
+            "secretKey" => urlencode($this->apiSecret),
+            "prefix" => urlencode($prefix),
+            "resultsQueries" => urlencode($resultsQueries),
+            "resultsProducts" => urlencode($resultsProducts),
+            "category" => urlencode($category),
+            "productFormat" => urlencode($productFormat)
+        );
+        
+        if (!empty($hide))
+            $query["hide"] = urlencode($hide);
+        
+        $response = $this->http->get("autocompletes", $query);
+        
+        if($this->isSucess($response["code"]))
+            return $response["data"];
+        
+        throw new SdkChaordicException("[Search][autocomplete] " . $response["responseText"]);
+    }
 }
